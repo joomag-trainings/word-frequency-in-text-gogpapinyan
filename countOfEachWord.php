@@ -3,8 +3,8 @@
         $content = file_get_contents("text.html");
         $arrayWord = [];
         $split = " ,.\n\t";
-        $singleWord = strtok($content,$split);
-        while ($singleWord != false){
+        $singleWord = strtok($content, $split);
+        while ($singleWord != false) {
             array_push($arrayWord,$singleWord);
             $singleWord = strtok($split);
         }
@@ -16,14 +16,16 @@
         <script type="text/javascript">
             google.charts.load('current', {'packages':['table']});
             google.charts.setOnLoadCallback(drawTable);
+
             function drawTable() {
                 var data = new google.visualization.DataTable();
                 data.addColumn('string', 'Word');
                 data.addColumn('number', 'Frequency');
                 data.addRows([
-                    <?php foreach ($tmp as $key => $value){
-                        echo "['".$key."', ".$value."],";
-                    }
+                    <?php
+                        foreach ($tmp as $key => $value){
+                            echo "['".$key."', ".$value."],";
+                        }
                     ?>
                 ]) ;
 
